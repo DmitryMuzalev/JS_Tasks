@@ -1,5 +1,9 @@
 function renameFiles(array) {
   let result = [];
+  array.forEach((e) => {
+    if (!result.includes(e)) result.push(e);
+    else result.push(e + `(${result.filter((f) => f === e).length})`);
+  });
   return result;
 }
 

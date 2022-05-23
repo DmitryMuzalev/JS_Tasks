@@ -1,9 +1,17 @@
 // Task
 // Given matrix, a rectangular matrix of integers, just add up all the values that don't appear below a "0".
 
-// Du
+// Function
 function getMatrixElementsSum(matrix) {
-  return matrix;
+  let noAddIndexes = [];
+  let result = 0;
+  matrix.forEach((e) => {
+    e.forEach((n, i) => {
+      if (n === 0) noAddIndexes.push(i);
+      if (!noAddIndexes.includes(i)) result += n;
+    });
+  });
+  return result;
 }
 
 // Tests

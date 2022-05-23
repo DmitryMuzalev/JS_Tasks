@@ -1,10 +1,13 @@
 function renameFiles(array) {
-  let result = [];
+  let result = {};
   array.forEach((e) => {
-    if (!result.includes(e)) result.push(e);
-    else result.push(e + `(${result.filter((f) => f === e).length})`);
+    if (result[e] === undefined) result[e] = 1;
+    else {
+      result[e + `(${result[e]})`] = 1;
+      result[e]++;
+    }
   });
-  return result;
+  return Object.keys(result);
 }
 
 // Test:

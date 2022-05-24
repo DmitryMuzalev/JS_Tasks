@@ -8,7 +8,38 @@
 
 //_Function:
 function minesweeper(matrix) {
-  return matrix;
+  let result = matrix.map((e) => e.map((n) => 0));
+
+  const environment = ([x, y]) => [
+    [x - 1, y - 1],
+    [x - 1, y],
+    [x - 1, y + 1],
+    [x, y - 1],
+    [x, y + 1],
+    [x + 1, y - 1],
+    [x + 1, y],
+    [x + 1, y + 1],
+  ];
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j]) {
+        let coordinates = environment([i, j]);
+        for (let n = 0; n < coordinates.length; n++) {
+          if (
+            coordinates[n][0] >= 0 &&
+            coordinates[n][1] >= 0 &&
+            coordinates[n][0] < matrix.length &&
+            coordinates[n][1] < matrix[i].length
+          ) {
+            result[coordinates[n][0]][coordinates[n][1]]++;
+          }
+        }
+      }
+    }
+  }
+
+  return result;
 }
 
 //_Tests:
@@ -33,5 +64,5 @@ const matrix3 = [
 ];
 
 console.log(minesweeper(matrix1));
-//console.log(minesweeper(matrix2));
-//console.log(minesweeper(matrix3));
+console.log(minesweeper(matrix2));
+console.log(minesweeper(matrix3));

@@ -14,11 +14,11 @@ function getSumOfDigits(n) {
     .split("")
     .reduce((a, b) => Number(a) + Number(b));
   if (result > 9) return getSumOfDigits(result);
-  else return result;
+  else return Number(result);
 }
 
 //_Tests:
-console.log(getSumOfDigits(100));
+console.log(getSumOfDigits(0));
 console.log(getSumOfDigits(91));
 console.log(getSumOfDigits(99));
 console.log(getSumOfDigits(155));

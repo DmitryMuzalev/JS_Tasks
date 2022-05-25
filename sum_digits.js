@@ -9,12 +9,18 @@
 */
 
 //_Function:
-function getSumOfDigits(n) {}
+function getSumOfDigits(n) {
+  let result = String(n)
+    .split("")
+    .reduce((a, b) => Number(a) + Number(b));
+  if (result > 9) return getSumOfDigits(result);
+  else return result;
+}
 
 //_Tests:
 console.log(getSumOfDigits(100));
 console.log(getSumOfDigits(91));
-//console.log(getSumOfDigits(99));
-//console.log(getSumOfDigits(155));
-//console.log(getSumOfDigits(1564));
-//console.log(getSumOfDigits(22254548481));
+console.log(getSumOfDigits(99));
+console.log(getSumOfDigits(155));
+console.log(getSumOfDigits(1564));
+console.log(getSumOfDigits(22254548481));

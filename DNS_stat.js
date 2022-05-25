@@ -6,7 +6,20 @@
 
 //_Function:
 function getDNSStats(domains) {
-  return {};
+  let result = {};
+
+  domains = domains.map((e) => e.split(".").reverse());
+
+  domains.forEach((e) => {
+    let d = "";
+    for (let i = 0; i < e.length; i++) {
+      d += "." + e[i];
+      if (result[d] === undefined) result[d] = 1;
+      else result[d]++;
+    }
+  });
+
+  return result;
 }
 
 //_Tests:
@@ -22,6 +35,6 @@ const domains3 = [
   "calendar.google.com",
 ];
 
-console.log(getDNSStats(domains1));
-//console.log(getDNSStats(domains2));
-//console.log(getDNSStats(domains3));
+console.log(getDNSStats(domains1)); //{'.ru': 3, '.ru.yandex': 3, '.ru.yandex.code': 1,'.ru.yandex.music': 1}
+console.log(getDNSStats(domains2));
+console.log(getDNSStats(domains3));

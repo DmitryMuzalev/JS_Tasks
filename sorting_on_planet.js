@@ -13,11 +13,25 @@
 
 //_Function:
 function sortTwisted37(array) {
-  return array;
+  const map37 = { 7: 3, 3: 7 };
+
+  return array
+    .slice()
+    .sort((a, b) => checking_3_and_7(a) - checking_3_and_7(b));
+
+  function checking_3_and_7(n) {
+    return parseInt(String(n).replace(/[37]/g, (e) => map37[e]));
+  }
 }
 
 //_Tests:
 
-console.log(sortTwisted37([1, 2, 3, 4, 5, 6, 7, 8, 9])); //[1, 2, 7, 4, 5, 6, 3, 8, 9]
-console.log(sortTwisted37([12, 13, 14])); // [12, 14, 13]
-console.log(sortTwisted37([9, 2, 4, 7, 3])); //[2, 7, 4, 3, 9]
+//console.log(sortTwisted37([1, 2, 3, 4, 5, 6, 7, 8, 9])); //[1, 2, 7, 4, 5, 6, 3, 8, 9]
+//console.log(sortTwisted37([12, 13, 14])); // [12, 14, 13]
+//console.log(sortTwisted37([9, 2, 4, 7, 3])); //[2, 7, 4, 3, 9]
+console.log(
+  sortTwisted37([
+    -13, 79, 74, 19, 73, 32, 37, -21, 18, -20, 77, -17, 48, 46, 69, -14, 56, 23,
+    24, 73, 9, -2, 42, 35, 46,
+  ])
+);

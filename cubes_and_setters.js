@@ -7,30 +7,49 @@
 */
 
 //_Solution:
+class Cube {
+  constructor(length) {
+    this.length = length;
+  }
+
+  get surfaceArea() {
+    return 6 * Math.pow(this.length, 2);
+  }
+  set surfaceArea(n) {
+    this.length = Math.sqrt(n / 6);
+  }
+
+  get volume() {
+    return Math.pow(this.length, 3);
+  }
+  set volume(n) {
+    this.length = Math.cbrt(n);
+  }
+}
 
 //_Tests:
 var cube = new Cube(1);
 
-console.log(cube.length, 1);
-console.log(cube.surfaceArea, 6);
-console.log(cube.volume, 1);
+console.log(cube.length); // 1
+console.log(cube.surfaceArea); // 6
+console.log(cube.volume); // 1
+
+console.log("-----------------------");
 
 cube.length = 2;
-console.log(cube.surfaceArea, 24);
-console.log(cube.volume, 8);
+console.log(cube.surfaceArea); //24
+console.log(cube.volume); // 8
+
+console.log("-----------------------");
 
 cube.surfaceArea = 54;
-console.log(cube.length, 3);
-console.log(cube.volume, 27);
+console.log(cube.length); // 3
+console.log(cube.volume); // 27
+
+console.log("-----------------------");
 
 cube.surfaceArea = 96;
-console.log(cube.length, 4);
-console.log(cube.volume, 64);
+console.log(cube.length); // 4
+console.log(cube.volume); //64
 
-cube.volume = 125;
-console.log(Math.roundTo(cube.length, 5), 5);
-console.log(Math.roundTo(cube.surfaceArea, 5), 150);
-
-cube.volume = 1000;
-console.log(Math.roundTo(cube.length, 5), 10);
-console.log(Math.roundTo(cube.surfaceArea, 5), 600);
+console.log("-----------------------");

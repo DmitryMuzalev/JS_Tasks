@@ -6,10 +6,23 @@
 
 //_Function:
 class Person {
-  // You can't redeclare "Person", so this won't work...
-}
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
-Person.prototype.name; // Will this work?
+  getName() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+Object.defineProperty(Person.prototype, "name", {
+  get() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+  set(newName) {
+    [this.firstName, this.lastName] = newName.split(" ");
+  },
+});
 
 // Maybe javascript provides the ability to add
 // getter and setters to an existing class?
@@ -19,3 +32,9 @@ let marcusFenix = new Person("Marcus", "Fenix"),
   augustusCole = new Person("Augustus", "Cole"),
   damonBaird = new Person("Damon", "Baird"),
   dominicSantiago = new Person("Dominic", "Santiago");
+
+augustusCole.name = "Cole Train";
+dominicSantiago.name = "Dom Santiago";
+
+console.log(augustusCole.getName()); // "Cole Train";
+console.log(dominicSantiago.getName()); //"Dom Santiago"

@@ -17,6 +17,48 @@
 
 //_Solution:
 
+Array.prototype.square = function () {
+  let result = [];
+  this.forEach((e) => result.push(e ** 2));
+  return result;
+};
+
+Array.prototype.cube = function () {
+  let result = [];
+  this.forEach((e) => result.push(e ** 3));
+  return result;
+};
+
+Array.prototype.sum = function () {
+  let result = 0;
+  this.forEach((e) => (result += e));
+  return result;
+};
+
+Array.prototype.average = function () {
+  return this.sum() / this.length;
+};
+
+Array.prototype.even = function () {
+  let result = [];
+  this.forEach((e) => {
+    if (e % 2 === 0) {
+      result.push(e);
+    }
+  });
+  return result;
+};
+
+Array.prototype.odd = function () {
+  let result = [];
+  this.forEach((e) => {
+    if (e % 2 !== 0) {
+      result.push(e);
+    }
+  });
+  return result;
+};
+
 //_Tests:
 
 const numbers = [1, 2, 3, 4, 5];

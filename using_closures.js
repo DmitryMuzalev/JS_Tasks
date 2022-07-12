@@ -9,7 +9,13 @@
 */
 
 //_Solution:
-var Cat = (function () {})();
+class Cat {
+  constructor(name, weight) {
+    this.name = name;
+    this.weight = weight;
+  }
+  static averageWeight() {}
+}
 
 //_Tests:
 let fluffy = new Cat("fluffy", 15);
@@ -19,4 +25,4 @@ console.log(fluffy.weight); //15
 console.log(fluffy instanceof Cat); //true
 console.log(fluffy.averageWeight); //undefined
 console.log(typeof Cat.averageWeight); //"function"
-console.log(Cat.averageWeight()); //20
+//console.log(Cat.averageWeight()); //20
